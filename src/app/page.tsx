@@ -57,6 +57,17 @@ function Header() {
 }
 
 export default function Home() {
+  const mockResposne = {
+    decision: "deny",
+    reason: "excessive_refund_risk",
+    action: "block_action",
+    controls: {
+      rate_limit: "0/day",
+      review_required: true,
+    },
+    policy_id: "refund_abuse_v2",
+  }
+
   return (
     <main className="min-h-screen bg-[#070A12] text-white">
       <section className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8">
@@ -73,7 +84,7 @@ export default function Home() {
         <div className="grid flex-1 items-center gap-14 py-20 md:grid-cols-2">
           <div>
             <div className="mb-5 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-200">
-              Decision infrastructure for high-risk commerce
+              Decision API for high-risk commerce
             </div>
 
             <h1 className="max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl">
@@ -87,49 +98,25 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="mailto:hello@veras.dev"
-                className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black hover:bg-white/90"
+                href="/run-decision"
+                className="rounded-full border text-bold border-white/15 px-5 py-3 text-sm text-white/80 bg-white/90"
               >
-                Get API Access
-              </a>
-
-              <a
-                href="#example"
-                className="rounded-full border border-white/15 px-5 py-3 text-sm text-white/80 hover:bg-white/10"
-              >
-                View Example
+                Run your first decision
               </a>
             </div>
           </div>
 
-          <div
-            id="example"
-            className="rounded-3xl border border-white/10 bg-black p-6 shadow-2xl"
-          >
-            <div className="mb-4 flex gap-2">
-              <span className="h-3 w-3 rounded-full bg-white/20" />
-              <span className="h-3 w-3 rounded-full bg-white/20" />
-              <span className="h-3 w-3 rounded-full bg-white/20" />
-            </div>
+        <section className="grid gap-4 md:grid-cols-1">
+          <div className="rounded-3xl border border-cyan-400/20 bg-[#0B0F1A] p-5 shadow-2xl">
+            <h2 className="mb-4 text-sm font-medium text-cyan-300">
+              API Response
+            </h2>
 
-            <pre className="m-0 overflow-x-auto rounded-2xl bg-black p-6 text-left font-mono text-sm leading-7 text-slate-100">
-              {`{
-                  "decision": "deny",
-                  "reason": "excessive_refund_attempts",
-                  "risk_score": 0.92,
-                  "signals": {
-                    "chargebacks": 3,
-                    "refund_attempts": 5,
-                    "account_age_days": 12
-                  },
-                  "action": "block",
-                  "metadata": {
-                    "rule_id": "refund_throttle_v2",
-                    "evaluated_at": "2026-05-04T16:52:31Z"
-                  }
-              }`}
+            <pre className="overflow-x-auto rounded-2xl bg-black/30 p-5 text-sm leading-7 text-slate-100">
+              {JSON.stringify(mockResposne, null, 2)}
             </pre>
           </div>
+        </section>
         </div>
 
         <section className="grid gap-4 pb-12 md:grid-cols-3">
