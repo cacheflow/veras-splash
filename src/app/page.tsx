@@ -69,8 +69,8 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#070A12] text-white">
-      <section className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8">
+    <main className="min-h-screen min-w-0 bg-[#070A12] text-white">
+      <section className="mx-auto flex min-h-screen max-w-full flex-col px-6 py-8">
         <nav className="flex items-center justify-between">
           <div className="text-lg font-semibold tracking-tight">Veras</div>
           <a
@@ -106,8 +106,8 @@ export default function Home() {
             </div>
           </div>
 
-        <section className="grid gap-4 md:grid-cols-1">
-          <div className="rounded-3xl border border-cyan-400/20 bg-[#0B0F1A] p-5 shadow-2xl">
+        <section className="w-full md:w-lg min-w-0 overflow-hidden grid gap-4">
+          <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#0B0F1A] p-5 shadow-2xl">
             <h2 className="mb-4 text-sm font-medium text-cyan-300">
               API Response
             </h2>

@@ -54,7 +54,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/favicon.ico" />
       </head>
-      <body className={`${outfit.className} dark:bg-gray-900`}>
+      <body className={`${outfit.className} dark:bg-gray-900 overflow-x-hidden`}>
         <PrimeReactProvider>
           <ThemeProvider>
             <SidebarProvider>{children}</SidebarProvider>

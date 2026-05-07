@@ -94,19 +94,19 @@ function evaluateDecision(request: any) {
 }
 
 const Scenarios = ({scenarios, setSelected, selected}: any) => {
-    return Object.entries(scenarios).map(([key, scenario]) => (
-      <button
-          key={key}
-          onClick={() => setSelected(key as keyof typeof scenarios)}
-          className={`w-full rounded-2xl px-4 py-3 text-left text-sm ${
-          selected === key
-              ? "bg-white text-black"
-              : "bg-white/5 text-white/70 hover:bg-white/10"
-          }`}
-      >
-          {scenario.label}
-      </button>
-      ))
+  return Object.entries(scenarios).map(([key, scenario]) => (
+    <button
+        key={key}
+        onClick={() => setSelected(key as keyof typeof scenarios)}
+        className={`w-full rounded-2xl px-4 py-3 text-left text-sm ${
+        selected === key
+            ? "bg-white text-black"
+            : "bg-white/5 text-white/70 hover:bg-white/10"
+        }`}
+    >
+        {scenario.label}
+    </button>
+    ))
 }
 
 export default function RunDecisionPage() {
@@ -141,8 +141,8 @@ export default function RunDecisionPage() {
           </p>
         </div>
 
-        <section className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+        <section className="grid gap-5 sm:grid-cols-1 lg:grid-cols-3">
+          <div className="min-w-0 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
             <h2 className="mb-4 text-sm font-medium text-white/50">
               Scenarios
             </h2>
@@ -152,7 +152,7 @@ export default function RunDecisionPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-[#0B0F1A] p-5">
+          <div className="min-w-0 rounded-3xl border border-white/10 bg-[#0B0F1A] p-5">
             <h2 className="mb-4 text-sm font-medium text-white/50">
               Request Payload
             </h2>
@@ -162,7 +162,7 @@ export default function RunDecisionPage() {
             </pre>
           </div>
 
-          <div className="rounded-3xl border border-cyan-400/20 bg-[#0B0F1A] p-5 shadow-2xl">
+          <div className="min-w-0 rounded-3xl border border-cyan-400/20 bg-[#0B0F1A] p-5 shadow-2xl">
             <h2 className="mb-4 text-sm font-medium text-cyan-300">
               Decision Response
             </h2>
