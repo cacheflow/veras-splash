@@ -69,7 +69,7 @@ const SIMULATED_SCENARIOS = [
 const POLICY_EXAMPLES = [
   {
     id: "refund-50",
-    label: "Can refund $50",
+    label: "Refund $50",
     action: "issue_refund",
     params: { amount_usd: 50, order_id: "ord_rx_4021" },
     decision: "ALLOW",
@@ -77,17 +77,8 @@ const POLICY_EXAMPLES = [
     remediation: "Processed automatically."
   },
   {
-    id: "refund-5000",
-    label: "Can refund $5,000",
-    action: "issue_refund",
-    params: { amount_usd: 5000, order_id: "ord_rx_4021" },
-    decision: "DENY",
-    policy: "Refund limit of $1,000 exceeded. Action blocked for automated agents.",
-    remediation: "Requires manual administrative override."
-  },
-  {
     id: "send-message",
-    label: "Can send customer message",
+    label: "Send message",
     action: "send_message",
     params: { text: "Your prescription renewal is approved.", recipient: "+15005550009" },
     decision: "ALLOW",
@@ -96,7 +87,7 @@ const POLICY_EXAMPLES = [
   },
   {
     id: "issue-credit",
-    label: "Can issue store credit",
+    label: "Issue credit",
     action: "issue_store_credit",
     params: { credit_usd: 150, user_id: "usr_9918" },
     decision: "REVIEW",
@@ -104,35 +95,8 @@ const POLICY_EXAMPLES = [
     remediation: "Queued for Risk Team validation."
   },
   {
-    id: "modify-subscription",
-    label: "Can modify subscription",
-    action: "modify_subscription",
-    params: { new_plan: "enterprise_annual", company_id: "org_clerk_20" },
-    decision: "THROTTLE",
-    policy: "Automated subscription changes limited to 1 execution per billing period.",
-    remediation: "Undergoing verification hold."
-  },
-  {
-    id: "access-financial",
-    label: "Can access financial data",
-    action: "read_financial_report",
-    params: { metrics: ["revenue", "escrow_balances"], quarter: "Q3_2026" },
-    decision: "DENY",
-    policy: "AI agent profile permissions restricted. Access to treasury ledger is disabled.",
-    remediation: "Access denied. Action reported to console logs."
-  },
-  {
-    id: "trigger-payout",
-    label: "Can trigger payout",
-    action: "trigger_creator_payout",
-    params: { amount_usd: 12000, account_id: "creator_acct_8892" },
-    decision: "REVIEW",
-    policy: "Transaction exceeds creator normal daily average by 200%.",
-    remediation: "Pending verification check."
-  },
-  {
     id: "create-listing",
-    label: "Can create listing",
+    label: "Create listing",
     action: "publish_listing",
     params: { category: "pharma", product: "Sildenafil (Prescription)" },
     decision: "DENY",
