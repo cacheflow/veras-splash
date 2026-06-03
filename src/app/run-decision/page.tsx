@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 const scenarios = {
   normal: {
@@ -93,11 +93,11 @@ function evaluateDecision(request: any) {
   };
 }
 
-const Scenarios = ({scenarios, setSelected, selected}: any) => {
+const Scenarios = ({scenarios, handleSetSelected, selected}: any) => {
   return Object.entries(scenarios).map(([key, scenario]) => (
     <button
         key={key}
-        onClick={() => setSelected(key as keyof typeof scenarios)}
+        onClick={() => handleSetSelected(key as keyof typeof scenarios)}
         className={`w-full rounded-2xl px-4 py-3 text-left text-sm ${
         selected === key
             ? "bg-white text-black"
@@ -110,11 +110,36 @@ const Scenarios = ({scenarios, setSelected, selected}: any) => {
 }
 
 export default function RunDecisionPage() {
-  const [selected, setSelected] = useState<keyof typeof scenarios>("agent");
-  const request = scenarios[selected].request;
+  const [selectedDecision, setSelected] = useState<keyof typeof scenarios>("agent");
+  const request = scenarios[selectedDecision].request;
 
   const decisionResponse = useMemo(() => evaluateDecision(request), [request]);
   const response = JSON.stringify(decisionResponse, null, 2);
+
+  const fetchDecision = async (selectedDecision: string) => {
+    const url = `${process.env.NEXT_PUBLIC_URL}/api/run-decision?decision=${selectedDecision}`;
+    const req = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const res = await req.json();
+
+    console.log('res is ', res)
+
+    return res;
+  }
+
+  useEffect(() => {
+    fetchDecision(selectedDecision)
+  }, [])
+
+  const handleSetSelected = async (selected: string) => {
+    const decisionRes = await fetchDecision(selectedDecision);
+    setSelected(decisionRes);
+  }
 
   return (
    <main className="min-h-screen bg-[#070A12] text-white">
@@ -148,7 +173,7 @@ export default function RunDecisionPage() {
             </h2>
 
             <div className="space-y-3">
-              <Scenarios scenarios={scenarios} setSelected={setSelected} selected={selected} />
+              <Scenarios scenarios={scenarios} handleSetSelected={handleSetSelected} selectedDecision={selectedDecision} />
             </div>
           </div>
 

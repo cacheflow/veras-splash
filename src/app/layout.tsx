@@ -11,14 +11,14 @@ const outfit = Outfit({
 const baseUrl = process.env.NEXT_PUBLIC_URL
 
 export const metadata = {
-  title: "Veras | Decision API for High-Risk Systems",
+  title: "Veras | The Permissions Layer for AI Agents",
   description:
-    "Veras is a unified decision API for permissions, entitlements, rate limits, and abuse control in high-risk systems.",
+    "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
 
   openGraph: {
-    title: "Veras | Decision API for High-Risk Systems",
+    title: "Veras | The Permissions Layer for AI Agents",
     description:
-      "Control who can do what, before risk becomes loss. Veras unifies permissions, entitlements, and abuse controls into a single decision layer.",
+      "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
     url: baseUrl,
     siteName: "Veras",
     images: [
@@ -26,7 +26,7 @@ export const metadata = {
         url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Veras Decision API for High-Risk Systems",
+        alt: "Veras permissions layer for AI agents",
       },
     ],
     locale: "en_US",
@@ -35,9 +35,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Veras | Decision API for High-Risk Systems",
+    title: "Veras | The Permissions Layer for AI Agents",
     description:
-      "A unified API for permissions, entitlements, rate limits, and abuse control in high-risk systems.",
+      "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
     images: [`${baseUrl}/og-image.png`],
     creator: "@verasdev", // change if needed
   },
@@ -50,11 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/images/favicon.ico" />
       </head>
-      <body className={`${outfit.className} dark:bg-gray-900 overflow-x-hidden`}>
+      <body className={`${outfit.className} bg-[#07080a] text-[#f3f4f6] antialiased overflow-x-hidden`}>
         <PrimeReactProvider>
           <ThemeProvider>
             <SidebarProvider>{children}</SidebarProvider>
