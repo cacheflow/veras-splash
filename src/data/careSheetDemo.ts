@@ -138,14 +138,14 @@ const dayOffsets = [
   { label: "Day 6", value: 5 }
 ];
 
-let date = new Date()
-const options = {
+const date = new Date()
+const options: Intl.DateTimeFormatOptions = {
   year: 'numeric', 
   month: 'long', 
   day: 'numeric'
 }
 
-let surgeryDate = date.toLocaleDateString('en-US', options)
+const surgeryDate = date.toLocaleDateString('en-US', options)
 const careSheetDemoData = {
   patient: { name: "Gaby Espinoza" },
   procedure_name: "Tummy Tuck",

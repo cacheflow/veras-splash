@@ -11,22 +11,23 @@ const outfit = Outfit({
 const baseUrl = process.env.NEXT_PUBLIC_URL
 
 export const metadata = {
-  title: "Veras | The Permissions Layer for AI Agents",
+  metadataBase: new URL(baseUrl || "https://onveras.com"),
+  title: "Veras | Connect Every Trust Signal",
   description:
-    "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
+    "Connect events from moderation, identity, fraud, payments, support, and internal systems without writing custom glue code.",
 
   openGraph: {
-    title: "Veras | The Permissions Layer for AI Agents",
+    title: "Veras | Connect Every Trust Signal",
     description:
-      "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
+      "Connect events from moderation, identity, fraud, payments, support, and internal systems without writing custom glue code.",
     url: baseUrl,
     siteName: "Veras",
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: "/images/og-trust-signals.png",
         width: 1200,
         height: 630,
-        alt: "Veras permissions layer for AI agents",
+        alt: "Veras connects trust signals from across the internet stack",
       },
     ],
     locale: "en_US",
@@ -35,10 +36,10 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Veras | The Permissions Layer for AI Agents",
+    title: "Veras | Connect Every Trust Signal",
     description:
-      "Veras helps high-risk platforms define, enforce, and monitor AI agent permissions before actions become losses.",
-    images: [`${baseUrl}/og-image.png`],
+      "Connect events from moderation, identity, fraud, payments, support, and internal systems without writing custom glue code.",
+    images: ["/images/og-trust-signals.png"],
     creator: "@verasdev", // change if needed
   },
 };

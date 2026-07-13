@@ -1,6 +1,6 @@
-import { isEmpty, isNil } from 'ramda';
-
-const isUndefined = (data: unknown) => data === 'undefiend';
-
-export const isPresent = (data: unknown) =>
-  !isEmpty(data) && !isNil(data) && !isUndefined(data);
+export const isPresent = (data: unknown) => {
+  if (data === null || data === undefined) return false;
+  if (typeof data === 'string' || Array.isArray(data)) return data.length > 0;
+  if (typeof data === 'object') return Object.keys(data).length > 0;
+  return true;
+};
