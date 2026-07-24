@@ -1,0 +1,126 @@
+.veras-dashboard {
+  --background: #080a0d;
+  --surface: #0d1015;
+  --surface-raised: #12161d;
+  --border: #20252e;
+  --muted: #858d9b;
+  --foreground: #f0f2f5;
+  --blue: #6c8cff;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    var(--background);
+  background-size: 40px 40px;
+  color: var(--foreground);
+}
+
+.veras-dashboard *,
+.veras-dashboard *::before,
+.veras-dashboard *::after {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+.veras-dashboard ::selection {
+  background: rgba(108, 140, 255, 0.35);
+}
+
+.veras-dashboard h1,
+.veras-dashboard h2,
+.veras-dashboard h3,
+.veras-dashboard h4,
+.veras-dashboard h5,
+.veras-dashboard h6 {
+  color: #f0f2f5;
+  margin: 0;
+}
+
+.veras-dashboard .dashboard-brand-link {
+  color: #f0f2f5;
+  text-decoration: none;
+}
+
+.veras-dashboard .dashboard-nav-link {
+  color: #9aa3b1;
+  text-decoration: none;
+}
+
+.veras-dashboard .dashboard-nav-link:hover {
+  color: #f0f2f5;
+  text-decoration: none;
+}
+
+.veras-dashboard .dashboard-nav-link[data-active="true"] {
+  color: #aabaff;
+}
+
+.veras-dashboard table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.veras-dashboard table thead,
+.veras-dashboard table tr,
+.veras-dashboard table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+.veras-dashboard table td,
+.veras-dashboard table th {
+  border: 0;
+}
+
+.veras-dashboard .panel {
+  background: linear-gradient(
+    145deg,
+    rgba(17, 21, 28, 0.97),
+    rgba(11, 14, 19, 0.97)
+  );
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.16);
+}
+
+.veras-dashboard .eyebrow {
+  color: #7f8999;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.veras-dashboard .signal-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108, 140, 255, 0.5),
+    transparent
+  );
+}
+
+.veras-dashboard .scrollbar-none {
+  scrollbar-width: none;
+}
+
+.veras-dashboard .scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes verasPulseDot {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.veras-dashboard .pulse-dot {
+  animation: verasPulseDot 2s ease-in-out infinite;
+}

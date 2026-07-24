@@ -1,6 +1,5 @@
 export const isUnauthorized = (status: number | string) => {
-
-  if (typeof status === 'string') {
+  if (typeof status === "string") {
     const statusNum = +status;
     return statusNum == 401;
   }

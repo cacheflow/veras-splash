@@ -1,14 +1,14 @@
-import { Outfit } from 'next/font/google';
-import './globals.css';
-import { PrimeReactProvider } from 'primereact/api';
-import { SidebarProvider } from '@/context/SidebarContext';
-import { ThemeProvider } from '@/context/ThemeContext';
+import { Outfit } from "next/font/google";
+import "./globals.css";
+import { PrimeReactProvider } from "primereact/api";
+import { SidebarProvider } from "@/context/SidebarContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_URL
+const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 export const metadata = {
   metadataBase: new URL(baseUrl || "https://onveras.com"),
@@ -44,7 +44,6 @@ export const metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,7 +54,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/favicon.ico" />
       </head>
-      <body className={`${outfit.className} bg-[#07080a] text-[#f3f4f6] antialiased overflow-x-hidden`}>
+      <body
+        className={`${outfit.className} bg-[#07080a] text-[#f3f4f6] antialiased overflow-x-hidden`}
+      >
         <PrimeReactProvider>
           <ThemeProvider>
             <SidebarProvider>{children}</SidebarProvider>

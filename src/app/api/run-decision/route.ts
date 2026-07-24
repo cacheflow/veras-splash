@@ -9,6 +9,6 @@ export async function GET() {
     },
     policy_id: "default_allow_v1",
   };
-  
+
   return Response.json(data, {});
 }
