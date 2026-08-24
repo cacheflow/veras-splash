@@ -4163,3 +4163,147 @@ pre {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Warm, approachable marketing palette. Dashboard styles remain isolated. */
+.veras-light {
+  background: #fbfaf7;
+  color: #1c1917;
+}
+
+.veras-light .veras-grid-bg {
+  background-image:
+    linear-gradient(rgba(28, 25, 23, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 25, 23, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.veras-light header {
+  background: rgba(251, 250, 247, 0.88);
+  border-color: rgba(28, 25, 23, 0.08);
+}
+
+.veras-light [class*="bg-[#0"],
+.veras-light [class*="bg-white/["] {
+  background-color: #ffffff;
+}
+
+.veras-light [class*="bg-[#06"] {
+  background-color: #f4f3ef;
+}
+
+.veras-light [class*="border-white"] {
+  border-color: rgba(28, 25, 23, 0.1);
+}
+
+.veras-light .text-white,
+.veras-light .text-neutral-100,
+.veras-light .text-neutral-200,
+.veras-light .text-neutral-300 {
+  color: #1c1917;
+}
+
+.veras-light .text-neutral-400 {
+  color: #57534e;
+}
+.veras-light .text-neutral-500 {
+  color: #78716c;
+}
+.veras-light .text-neutral-600 {
+  color: #a8a29e;
+}
+.veras-light .text-indigo-400,
+.veras-light .text-indigo-300 {
+  color: #276749;
+}
+
+.veras-light a[class*="bg-white"] {
+  background: #1d6146;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.12);
+}
+
+.veras-light a[class*="bg-white"]:hover {
+  background: #174e39;
+}
+
+.veras-light a[class*="bg-white/["] {
+  background: #ffffff;
+  color: #1c1917;
+}
+
+.veras-light .bg-gradient-to-br {
+  background: linear-gradient(135deg, #f1f7ee 0%, #fffdf4 52%, #e8f4eb 100%);
+}
+
+.veras-action-rotator {
+  position: relative;
+  display: inline-grid;
+  width: 5.25em;
+  height: 1.08em;
+  overflow: hidden;
+  font-weight: 700;
+  vertical-align: -0.08em;
+  border-radius: 0.14em;
+  color: #1c1917;
+}
+
+.veras-action-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 0.18em 0.06em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(115%);
+  animation: veras-action-roll 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+.veras-action-word:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.veras-action-word:nth-child(2) {
+  animation-delay: 2.55s;
+}
+.veras-action-word:nth-child(3) {
+  animation-delay: 5.55s;
+}
+.veras-action-word:nth-child(4) {
+  animation-delay: 8.55s;
+}
+
+@keyframes veras-action-roll {
+  0% {
+    opacity: 0;
+    transform: translateY(115%);
+  }
+  4%,
+  21% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25%,
+  100% {
+    opacity: 0;
+    transform: translateY(-115%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veras-action-word {
+    display: none;
+    animation: none !important;
+  }
+
+  .veras-action-word:first-child {
+    display: flex;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+.rounded {
+  border-radius: 50%;
+}
