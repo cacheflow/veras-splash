@@ -1,7 +1,6 @@
 import {
   Activity,
   ArrowUpRight,
-  CheckCircle2,
   Clock3,
   PlugZap,
   RefreshCw,
@@ -9,19 +8,15 @@ import {
   ShieldCheck,
   TriangleAlert,
 } from "lucide-react";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { vendors } from "@/lib/veras-dashboard-data";
 import { SectionTitle, StatusDot } from "@/components/veras-dashboard/ui";
-import fingerprintLogo from "@/app/images/fingerprint-logo.jpeg";
-import personaLogo from "@/app/images/persona-logo.jpeg";
-import siftLogo from "@/app/images/sift-science-logo.png";
-import stripeLogo from "@/app/images/stripe-logo.png";
 
-const vendorLogos: Partial<Record<string, StaticImageData>> = {
-  Fingerprint: fingerprintLogo,
-  Persona: personaLogo,
-  "Stripe Radar": stripeLogo,
-  Sift: siftLogo,
+const vendorLogos: Partial<Record<string, string>> = {
+  Fingerprint: "/images/fingerprint-logo.jpeg",
+  Persona: "/images/persona-logo.jpeg",
+  "Stripe Radar": "/images/stripe-logo.png",
+  Sift: "/images/sift-science-logo.png",
 };
 
 const vendorDetails = {

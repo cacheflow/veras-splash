@@ -2,66 +2,30 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { VendorEcosystem } from "@/components/marketing/vendor-ecosystem";
 import {
   ArrowRight,
   ChevronRight,
-  CircleDollarSign,
+  Store,
   Menu,
   MessageSquare,
   PencilLine,
-  Settings2,
-  ShieldCheck,
   Upload,
   UserRoundCog,
   X,
 } from "lucide-react";
 
 const decisions = [
-  ["Message", "Allow", "allow"],
-  ["Upload", "Allow", "allow"],
-  ["Purchase", "Allow", "allow"],
-  ["Payout · $18,000", "Verify", "verify"],
-  ["Bank change", "Review", "review"],
+  ["Messaging · Stream", "Restrict", "verify"],
+  ["Livestream · Mux", "Disable", "review"],
+  ["Marketplace · Internal", "Suspend", "review"],
 ];
-const signals = [
-  "Identity verification",
-  "Payment activity",
-  "Moderation results",
-  "Fraud signals",
-  "Account history",
-  "Internal events",
-];
+const signals = ["Moderation tools", "Messaging services", "Video infrastructure", "Identity providers", "Support systems", "Internal services"];
 const useCases = [
-  [
-    "Message",
-    "Control suspicious outreach, links, bulk messaging, and restricted conversations.",
-    MessageSquare,
-  ],
-  [
-    "Upload",
-    "Approve, review, or block uploads using verification and moderation results.",
-    Upload,
-  ],
-  [
-    "Buy",
-    "Control purchases, refunds, credits, and other high-risk transactions.",
-    CircleDollarSign,
-  ],
-  [
-    "Get paid",
-    "Approve, hold, limit, or verify withdrawals and payouts.",
-    ShieldCheck,
-  ],
-  [
-    "Change account details",
-    "Protect payout destinations, account recovery, and other sensitive changes.",
-    UserRoundCog,
-  ],
-  [
-    "Scalable",
-    "Use the same pattern for selling, publishing, unlocking features, or any action unique to your platform.",
-    Settings2,
-  ],
+  ["Content safety", "Coordinate content reviews, removals and publishing restrictions.", Upload],
+  ["Account safety", "Manage account violations, suspensions and reinstatements.", UserRoundCog],
+  ["Behavioral safety", "Respond to harassment, spam and unwanted interactions.", MessageSquare],
+  ["Marketplace safety", "Enforce policies governing listings, promotions and commercial activity.", Store],
 ] as const;
 
 function Logo() {
@@ -78,24 +42,6 @@ function Logo() {
     </a>
   );
 }
-const CompanyLogo = ({ companyName }: { companyName: string }) => {
-  const logoObj = {
-    persona: "/images/persona-logo.jpeg",
-    stripe: "/images/stripe-logo.png",
-    hive: "/images/hive.jpeg",
-    veras: "/images/veras-logo.png",
-  };
-  const imgSrc = logoObj[companyName.toLowerCase() as keyof typeof logoObj];
-  return (
-    <Image
-      src={imgSrc}
-      alt={companyName}
-      width={97}
-      height={24}
-      className="h-7 w-auto rounded object-contain"
-    />
-  );
-};
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className="mb-4 flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-400">
@@ -134,13 +80,13 @@ function ProductVisual() {
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b0c10]/95 shadow-2xl shadow-black/50">
         <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-4 sm:px-6">
           <div>
-            <p className="text-sm font-semibold text-white">Creator #4829</p>
+            <p className="text-sm font-semibold text-white">Policy violation #4829</p>
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-500">
-              Sensitive action agent
+              Illustrative enforcement workflow
             </p>
           </div>
           <span className="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-emerald-300">
-            <span className="size-1.5 rounded-full bg-emerald-400" /> Live
+            <span className="size-1.5 rounded-full bg-emerald-400" /> Example
           </span>
         </div>
         <div className="divide-y divide-white/[0.055] px-3 py-2 sm:px-4">
@@ -159,8 +105,8 @@ function ProductVisual() {
           ))}
         </div>
         <div className="flex justify-between border-t border-white/[0.07] bg-white/[0.015] px-5 py-3.5 font-mono text-[10px] text-neutral-500 sm:px-6">
-          <span>5 actions evaluated</span>
-          <span>24ms</span>
+          <span>One policy · three services</span>
+          <span>Proposed actions</span>
         </div>
       </div>
     </div>
@@ -185,8 +131,9 @@ export default function Home() {
             <a href="#use-cases" className="hover:text-white">
               Use cases
             </a>
+            <a href="#integrations" className="hover:text-white">Integrations</a>
             <a href="/dashboard" className="hover:text-white">
-              Product
+              Product preview
             </a>
           </nav>
           <div className="hidden items-center gap-3 md:flex">
@@ -221,7 +168,8 @@ export default function Home() {
               <a href="#use-cases" onClick={() => setMenuOpen(false)}>
                 Use cases
               </a>
-              <a href="/dashboard">Product</a>
+              <a href="#integrations" onClick={() => setMenuOpen(false)}>Integrations</a>
+              <a href="/dashboard">Product preview</a>
               <a href="#api" onClick={() => setMenuOpen(false)}>
                 View docs
               </a>
@@ -238,25 +186,15 @@ export default function Home() {
 
       <section className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-5 pb-24 pt-20 sm:px-8 sm:pt-28 lg:grid-cols-[1.05fr_.95fr] lg:gap-20 lg:px-10 lg:pb-32 lg:pt-36">
         <div className="max-w-3xl">
-          <Eyebrow>AI-powered controls for high-risk platforms</Eyebrow>
+          <Eyebrow>Trust & safety for high-risk platforms</Eyebrow>
           <h1 className="text-[2.8rem] font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-6xl lg:text-[4.8rem]">
-            <span className="sr-only">
-              Use AI to control who can message, upload, buy, and get paid.
-            </span>
-            <span aria-hidden="true">Use AI to control who can </span>
-          </h1>
-          <h1 className="text-[2.8rem] font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-6xl lg:text-[4.8rem]">
-            <span className="veras-action-rotator">
-              <span className="veras-action-word">message</span>
-              <span className="veras-action-word">upload</span>
-              <span className="veras-action-word">buy</span>
-              <span className="veras-action-word">get paid</span>
-            </span>
+            Harassment, harmful content and abuse. One coordinated response.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-neutral-400 sm:text-xl">
-            Veras gives high-risk platforms one API to enforce rules across
-            content, payments, and accounts.
+            Connect your existing safety tools to restrict messaging, remove content and manage account privileges across your platform.
           </p>
+          <p className="mt-5 text-sm font-medium text-neutral-300">Less manual work. Faster response. Consistent enforcement.</p>
+          <p className="mt-3 text-xs leading-5 text-neutral-500">Product preview. Workflows and integrations shown are illustrative; contact us to discuss availability.</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href="mailto:hello@onveras.com?subject=Veras%20demo"
@@ -280,18 +218,14 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[.75fr_1.25fr] lg:px-10">
           <SectionHeading
             eyebrow="One place"
-            title="Turn scattered rules into agents."
+            title="One incident. Too many systems."
           />
           <div className="max-w-2xl lg:pt-8">
             <p className="text-lg leading-8 text-neutral-300">
-              Your rules already exist. They’re just scattered across messaging,
-              content, payments, identity, fraud, moderation, and account
-              access.
+              A harassment report comes in. Your team investigates, restricts messaging, takes down a livestream and suspends marketplace access—each in a different tool.
             </p>
             <p className="mt-5 text-lg leading-8 text-neutral-500">
-              Veras turns them into agents your team can review, deploy, and
-              improve—so every sensitive action follows the same rules before it
-              goes through.
+              Veras connects those steps so your team can act consistently across your platform.
             </p>
           </div>
         </div>
@@ -303,16 +237,16 @@ export default function Home() {
       >
         <SectionHeading
           eyebrow="How it works"
-          title="Describe the rule. Deploy the agent."
+          title="From policy to coordinated enforcement."
         />
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] lg:grid-cols-3">
           <div className="bg-[#090a0d] p-6 sm:p-8">
             <span className="font-mono text-xs text-indigo-400">01</span>
             <h3 className="mt-5 text-xl font-semibold text-white">
-              Connect your signals
+              Connect your tools
             </h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
-              Bring in the facts your platform already uses.
+              Bring together the moderation tools and services your team already uses.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-2">
               {signals.map((signal) => (
@@ -328,56 +262,38 @@ export default function Home() {
           <div className="bg-[#090a0d] p-6 sm:p-8">
             <span className="font-mono text-xs text-indigo-400">02</span>
             <h3 className="mt-5 text-xl font-semibold text-white">
-              Tell your agent
+              Define your policies
             </h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
-              Tell Veras what should happen in plain language. The agent turns
-              it into a rule your team can review.
+              Decide how your platform responds to abuse, violations and unwanted behavior.
             </p>
             <div className="mt-6 rounded-lg border border-white/[0.07] bg-[#060709] p-4">
               <div className="mb-3 flex items-center gap-2 text-xs text-neutral-500">
-                <PencilLine className="size-3.5" /> Prompt your agent
+                <PencilLine className="size-3.5" /> Example platform policy
               </div>
               <p className="text-sm leading-6 text-neutral-300">
-                If a creator changes their payout account and requests more than{" "}
-                <span className="text-white">$10,000 within 24 hours</span>,
-                require verification.
+                When a harassment violation is confirmed, restrict messaging, disable the livestream and suspend marketplace privileges pending review.
               </p>
             </div>
           </div>
-          <div id="api" className="bg-[#090a0d] p-6 sm:p-8">
+          <div className="bg-[#090a0d] p-6 sm:p-8">
             <span className="font-mono text-xs text-indigo-400">03</span>
             <h3 className="mt-5 text-xl font-semibold text-white">
-              Verify user actions
+              Coordinate enforcement
             </h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
-              Check every sensitive action in real time before it goes through.
+              Apply restrictions and moderation decisions across your platform from one place.
             </p>
-            <pre className="mt-6 overflow-x-auto rounded-lg border border-white/[0.07] bg-[#060709] p-4 font-mono text-[11px] leading-6 text-neutral-400">
-              <code>
-                <span className="text-violet-300">const</span> result ={" "}
-                <span className="text-violet-300">await</span> veras.check(
-                {`{\n`} user:{" "}
-                <span className="text-emerald-300">
-                  &quot;creator_4829&quot;
-                </span>
-                ,{`\n`} action:{" "}
-                <span className="text-emerald-300">
-                  &quot;request_payout&quot;
-                </span>
-                ,{`\n`} context: {`{ amount: 18000 }\n`}
-                {`})\n\n`}
-                <span className="text-neutral-600">{"// →"}</span> {`{ `}
-                <span className="text-indigo-300">
-                  decision: &quot;verify&quot;
-                </span>
-                {` }`}
-              </code>
-            </pre>
+            <div className="mt-6 rounded-lg border border-white/[0.07] bg-[#060709] p-4 text-sm leading-7 text-neutral-300">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-neutral-500">Illustrative response</p>
+              <p>Stream → Restrict messaging</p>
+              <p>Mux → Disable livestream</p>
+              <p>Internal service → Suspend marketplace access</p>
+            </div>
           </div>
         </div>
         <div className="mt-5 flex flex-wrap gap-2">
-          {["allow", "deny", "verify", "review", "limit", "hold"].map(
+          {["review", "restrict", "remove", "suspend", "reinstate"].map(
             (word) => (
               <span
                 key={word}
@@ -397,13 +313,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
           <SectionHeading
             eyebrow="Use cases"
-            title="Control the risky parts of your platform."
+            title="Safety across your platform."
           />
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 d-flex justify-content-center">
-            {useCases.map(([title, body, Icon], index) => (
+          <div className="mt-14 grid gap-4 sm:grid-cols-2">
+            {useCases.map(([title, body, Icon]) => (
               <article
                 key={title}
-                className={`rounded-xl border border-white/[0.07] bg-[#0a0b0e] p-6 ${index === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+                className="rounded-xl border border-white/[0.07] bg-[#0a0b0e] p-6"
               >
                 <div className="grid size-9 place-items-center rounded-lg border border-indigo-400/15 bg-indigo-400/[0.06] text-indigo-300">
                   <Icon className="size-4" />
@@ -420,49 +336,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
-        <div className="grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr]">
-          <SectionHeading
-            eyebrow="Works with your stack"
-            title="Keep the tools you already use."
-            body="Veras consumes the signals from your existing tools rather than replacing them."
-          />
-          <div className="rounded-2xl border border-white/[0.07] bg-[#0a0b0e] p-6 sm:p-8">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                ["Persona", "verifies"],
-                ["Hive", "moderates"],
-                ["Stripe", "moves money"],
-                ["Veras", "decides what happens"],
-              ].map(([name, job]) => (
-                <div
-                  key={name}
-                  className="flex min-h-32 flex-col items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-5 text-center"
-                >
-                  <div className="flex min-h-14 flex-col items-center justify-center gap-2">
-                    <CompanyLogo companyName={name} />
-                    <p className="text-sm font-semibold text-white">{name}</p>
-                  </div>
-                  <p className="mt-3 text-sm text-neutral-500">{job}.</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <VendorEcosystem />
+
+      <section id="api" className="relative z-10 mx-auto max-w-7xl px-5 pb-24 sm:px-8 lg:px-10">
+        <SectionHeading eyebrow="For developers" title="Connect internal systems to your safety workflow." body="Explore how safety signals and enforcement actions could connect to your services. This example illustrates the proposed flow, not a published API contract." />
+        <pre className="mt-8 overflow-x-auto rounded-xl border border-white/[0.07] bg-[#060709] p-6 text-xs leading-6 text-neutral-300"><code>{`// Illustrative payload — not a live endpoint or SDK
+{
+  "signal": "harassment.confirmed",
+  "account_id": "account_4829",
+  "policy": "restrict_pending_review",
+  "proposed_actions": [
+    { "service": "messaging", "action": "restrict" },
+    { "service": "video", "action": "disable_livestream" },
+    { "service": "marketplace", "action": "suspend_access" }
+  ]
+}`}</code></pre>
+        <a href="mailto:hello@onveras.com?subject=Veras%20integration%20documentation" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-indigo-400">Request integration documentation <ArrowRight className="size-4" /></a>
       </section>
 
       <section className="relative z-10 px-5 pb-24 sm:px-8 sm:pb-32 lg:px-10">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/[0.12] via-[#0c0d12] to-emerald-500/[0.06] px-6 py-14 text-center sm:px-10 sm:py-20">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <div className="flex justify-center">
-              <Eyebrow>Start with one action</Eyebrow>
+              <Eyebrow>Start with one safety workflow</Eyebrow>
             </div>
             <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
-              Deploy your first agent.
+              Bring your safety operations together.
             </h2>
             <p className="mt-5 max-w-2xl text-center text-base leading-7 text-neutral-400 sm:text-lg">
-              Start with one sensitive action. Describe the rule, review what
-              Veras creates, and enforce it everywhere.
+              Tell us where enforcement breaks down. Explore how Veras could connect your tools and help your team respond consistently.
             </p>
             <a
               href="mailto:hello@onveras.com?subject=Veras%20demo"
@@ -478,7 +380,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8 lg:px-10">
           <Logo />
           <p className="text-xs text-neutral-600">
-            AI agents for sensitive actions.
+            Trust & safety infrastructure for high-risk platforms.
           </p>
           <p className="text-xs text-neutral-600">
             © {new Date().getFullYear()} Veras

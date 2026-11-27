@@ -12,22 +12,22 @@ const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 export const metadata = {
   metadataBase: new URL(baseUrl || "https://onveras.com"),
-  title: "Veras | AI-Powered Action Control API",
+  title: "Veras | Trust & Safety for High-Risk Platforms",
   description:
-    "Use AI and one API to control messaging, content, purchases, payouts, and sensitive account actions.",
+    "Connect your existing safety tools, coordinate enforcement, and respond consistently to content, platform and account violations.",
 
   openGraph: {
-    title: "Veras | AI-Powered Action Control API",
+    title: "Veras | Trust & Safety for High-Risk Platforms",
     description:
-      "Use AI and one API to control messaging, content, purchases, payouts, and sensitive account actions.",
+      "Connect your existing safety tools, coordinate enforcement, and respond consistently to content, platform and account violations.",
     url: baseUrl,
     siteName: "Veras",
     images: [
       {
-        url: "/images/og-trust-signals.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Veras uses AI and one API to control sensitive user actions",
+        alt: "Veras — coordinated trust and safety enforcement",
       },
     ],
     locale: "en_US",
@@ -36,10 +36,10 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Veras | AI-Powered Action Control API",
+    title: "Veras | Trust & Safety for High-Risk Platforms",
     description:
-      "Use AI and one API to control messaging, content, purchases, payouts, and sensitive account actions.",
-    images: ["/images/og-trust-signals.png"],
+      "Connect your existing safety tools, coordinate enforcement, and respond consistently to content, account and platform violations.",
+    images: ["/opengraph-image"],
     creator: "@verasdev", // change if needed
   },
 };
